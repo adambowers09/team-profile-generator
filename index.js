@@ -1,16 +1,15 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
 const createHTML = require('./src/page-template.js');
-const Engineer = require('./libEngineer.js');
-const Manager = require('.lib/Manager.js');
-const Intern = require('.lib/Intern.js');
+const Engineer = require('./lib/Engineer.js');
+const Manager = require('./lib/Manager.js');
+const Intern = require('./lib/Intern.js');
 const path = require('path');
-const { assertEnumDefaultedMember } = require('@babel/types');
-const sendToDist = path.resolve(___dirname, "dist");
+const sendToDist = path.resolve(__dirname, "dist");
 const teamFile = path.join(sendToDist, "NewTeam.html");
 const employeeArray = [];
 
-const promtUser = () => {
+const promptUser = () => {
     return inquirer
         .prompt([
             {
@@ -139,8 +138,8 @@ const createEngineer = () => {
     
     function makeHTML() {
         fs.writeFileSync(teamFile, createHTML(employeeArray), "utf-8", (err) => {
-            console.log(err);
+          console.log(err);
         });
-    }
+      }
 
     promptUser();

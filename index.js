@@ -9,36 +9,37 @@ const sendToDist = path.resolve(__dirname, "dist");
 const teamFile = path.join(sendToDist, "NewTeam.html");
 const employeeArray = [];
 
+
 const promptUser = () => {
     return inquirer
         .prompt([
             {
                 type: 'input',
                 name: 'mgrName',
-                message: 'What is the Manager\'s name?'
+                message: 'What is the Team Manager\'s name?'
             },
             {
                 type: 'input',
                 name: 'mgrId',
-                message: 'What is the Manager\'s ID?'
+                message: 'What is the Team Manager\'s ID number?'
             },
             {
                 type: 'input',
                 name: 'mgrEmail',
-                message: 'What is the Manager\'s email?'
+                message: 'What is the Team Manager\'s email?'
             },
             {
                 type: 'input',
                 name: 'mgrOffice',
-                message: 'What is the Manager\'s office number'
-            },
+                message: 'What is the Team Manager\'s office number?'
+            }
         ])
         .then((response) => {
             const manager = new Manager(
                 response.mgrName,
                 response.mgrId,
                 response.mgrEmail,
-                response.mgrOffice,
+                response.mgrOffice
             );
             employeeArray.push(manager);
             addMember();
@@ -48,21 +49,22 @@ const promptUser = () => {
 function addMember() {
     inquirer
         .prompt([
-           {
-            type: 'list',
-            name: 'newEmployee',
-            message: 'Would you like to add a new Employee?',
-            choices: ['Engineer', 'Intern', 'No'],
+            {
+                type: 'list',
+                name: 'newEmployee',
+                message: 'Would you like to add a new Employee?',
+                choices: ['Engineer', 'Intern', 'No'],
             },
         ])
         .then((response) => {
-            if (response.newEmployee === 'Engineer'){
+            if (response.newEmployee === 'Engineer') {
                 createEngineer();
             } else if (response.newEmployee === 'Intern') {
                 createIntern();
             } else {
                 makeHTML();
             }
+
         });
 }
 
@@ -85,20 +87,20 @@ const createIntern = () => {
         },
         {
             type: 'input',
-            name: 'internSchools',
+            name: 'internSchool',
             message: 'What is the intern\'s school?',
         }
     ])
-    .then((response) => {
-        const intern = new Intern(
-            response.internName,
-            response.internId,
-            response.internEmail,
-            response.internSchool,
-        );
-        employeeArray.push(intern);
-        addMember();
-    })
+        .then((response) => {
+            const intern = new Intern(
+                response.internName,
+                response.internId,
+                response.internEmail,
+                response.internSchool
+            );
+            employeeArray.push(intern);
+            addMember();
+        })
 }
 
 const createEngineer = () => {
@@ -134,12 +136,12 @@ const createEngineer = () => {
             employeeArray.push(engineer);
             addMember();
         })
-    }
-    
-    function makeHTML() {
-        fs.writeFileSync(teamFile, createHTML(employeeArray), "utf-8", (err) => {
-          console.log(err);
-        });
-      }
+}
+function makeHTML() {
+  fs.writeFileSync(teamFile, createHTML(employeeArray), "utf-8", (err) => {
+    console.log(err);
+  });
+}
 
-    promptUser();
+
+promptUser();

@@ -14,17 +14,18 @@ This project is designed to generate an HTML page containing a roster for a soft
 
  ## GitHub & Video Link
 
- [Link to the repository]()
+ [Link to the repository](https://github.com/adambowers09/team-profile-generator)
 
- [Link to the vido]()
+ [Link to the vido](https://drive.google.com/file/d/1eAP_TuIYaIrDhDUG0EiAQIOUEWC-Syub/view)
 
  ## Installation
 
- Server must has Node.js installed.  Run "npm i" from the root directory in install required dependencies.
+ Server must has Node.js installed.  Run "npm i" from the root directory to install required dependencies.
 
  ## Usage
 
- Run "node index.js" and follow the user prompts to provide information about each employee.  Upon completion it will generate a new html in the /dist directory.
+ Run "node index.js" and follow the user prompts to provide information about each employee.  Upon completion it will generate a "New.Team.html" in the /dist directory.
 
  ## Screenshot
- ![application screenshot]()
+ ![application screenshot](./images/screencapture01.png)
+ ![application screenshot](./images/snippet01.PNG)
